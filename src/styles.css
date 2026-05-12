@@ -184,7 +184,7 @@ h3 {
 .metric-list strong { display: block; font-size: 1.8rem; color: var(--primary-dark); }
 .metric-list span { color: var(--muted); font-size: 0.86rem; }
 
-main { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+main { width: min(1440px, calc(100% - 36px)); margin: 0 auto; }
 
 .intro-panel {
   border-radius: var(--radius-xl);
@@ -235,12 +235,12 @@ main { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
 .steps-grid {
   margin-top: 24px;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: 1fr;
+  gap: 26px;
 }
 
 .step-card {
-  padding: 16px;
+  padding: clamp(16px, 2.2vw, 28px);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
   background: linear-gradient(180deg, #ffffff, #f8fcff);
@@ -269,13 +269,14 @@ main { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
 
 .image-frame img {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: cover;
+  height: auto;
+  max-height: none;
+  object-fit: contain;
   object-position: top center;
   background: #eef6fc;
 }
 
-.image-frame--compact img { aspect-ratio: 16 / 11; }
+.image-frame--compact img { max-height: none; }
 
 .image-frame figcaption {
   padding: 12px 14px 14px;
@@ -299,24 +300,25 @@ main { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
 
 .device-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 34px;
 }
 
-.device-card { border-radius: var(--radius-xl); padding: 22px; }
+.device-card { border-radius: var(--radius-xl); padding: clamp(20px, 3vw, 38px); }
 
 .device-card-header {
   display: grid;
-  grid-template-columns: 1fr 128px;
-  gap: 18px;
+  grid-template-columns: 1fr minmax(220px, 360px);
+  gap: 24px;
   align-items: center;
   margin-bottom: 18px;
 }
 
 .device-card-header img {
   border-radius: 18px;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
   border: 1px solid var(--line);
 }
 
@@ -328,13 +330,47 @@ main { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
 }
 
 .footer {
-  width: min(1180px, calc(100% - 36px));
+  width: min(1440px, calc(100% - 36px));
   margin: 0 auto 34px;
   padding: 24px 0;
   border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   color: var(--muted);
+}
+
+/* Full-size screenshot layout: keep software UI readable instead of thumbnail-like cards. */
+.screenshot-note {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.step-card .image-frame,
+.device-card .image-frame {
+  margin-top: 18px;
+}
+
+@media (min-width: 1100px) {
+  .feature-card {
+    grid-template-columns: 110px 1fr;
+  }
+
+  .step-card {
+    display: grid;
+    grid-template-columns: minmax(240px, 0.34fr) minmax(0, 1fr);
+    gap: 22px;
+    align-items: start;
+  }
+
+  .step-card .step-copy {
+    position: sticky;
+    top: 112px;
+  }
+
+  .step-card .image-frame {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 900px) {

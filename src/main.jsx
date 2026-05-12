@@ -184,8 +184,11 @@ function ManualSection({ section, index }) {
               <div className="steps-grid">
                 {item.steps.map((step, stepIndex) => (
                   <div className="step-card" key={`${item.title}-${step.image}`}>
-                    <div className="step-label">步驟 {stepIndex + 1}</div>
-                    <p>{step.text}</p>
+                    <div className="step-copy">
+                      <div className="step-label">步驟 {stepIndex + 1}</div>
+                      <p>{step.text}</p>
+                      <p className="screenshot-note">下方以完整寬度顯示操作畫面，避免縮圖造成介面文字不易辨識。</p>
+                    </div>
                     <ImageFrame file={step.image} caption={step.text} />
                   </div>
                 ))}
