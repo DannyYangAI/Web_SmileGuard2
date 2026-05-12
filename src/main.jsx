@@ -84,7 +84,7 @@ const devices = [
     name: '口內攝影機',
     badgeImage: '012-1.jpg',
     image: '012.jpg',
-    description: '瀏覽包含口腔各角度（九宮格）之高解析度照片。'
+    description: '瀏覽包含口腔各角度之高解析度照片。'
   },
   {
     name: '口掃機 Scanner',
