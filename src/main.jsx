@@ -87,12 +87,6 @@ const devices = [
     description: '瀏覽包含口腔各角度（九宮格）之高解析度照片。'
   },
   {
-    name: '口內攝影機補充畫面',
-    badgeImage: '013.jpg',
-    image: '013.jpg',
-    description: '附檔中的補充截圖，保留於網站中作為口內攝影或病歷影像瀏覽的輔助畫面。'
-  },
-  {
     name: '口掃機 Scanner',
     badgeImage: '014-1.jpg',
     image: '014.jpg',
@@ -116,10 +110,7 @@ function ImageFrame({ file, caption, compact = false }) {
   return (
     <figure className={`image-frame ${compact ? 'image-frame--compact' : ''}`}>
       <img src={`/images/${file}`} alt={caption} loading="lazy" />
-      <figcaption>
-        <span>{file}</span>
-        {caption}
-      </figcaption>
+      <figcaption>{caption}</figcaption>
     </figure>
   );
 }
@@ -144,7 +135,7 @@ function Header() {
         <div className="hero-copy">
           <p className="kicker">Software Operation Guide</p>
           <h1>SmileGuard II 軟體操作手冊</h1>
-          <p className="hero-text">以「整合所需的一切功能」式的功能展示區塊為靈感，將病患管理、醫療團隊管理、病歷紀錄與影像分析整理成清楚可讀的網站版操作說明。</p>
+          <p className="hero-text">依照實際操作流程，整理病患管理、醫療團隊管理、病歷紀錄與影像分析等功能，協助使用者快速熟悉 SmileGuard II 軟體操作。</p>
           <div className="hero-actions">
             <a className="button button-primary" href="#manual">開始閱讀手冊</a>
             <a className="button button-ghost" href="#devices">查看設備預覽</a>
@@ -187,7 +178,6 @@ function ManualSection({ section, index }) {
                     <div className="step-copy">
                       <div className="step-label">步驟 {stepIndex + 1}</div>
                       <p>{step.text}</p>
-                      <p className="screenshot-note">下方以完整寬度顯示操作畫面，避免縮圖造成介面文字不易辨識。</p>
                     </div>
                     <ImageFrame file={step.image} caption={step.text} />
                   </div>
@@ -237,9 +227,9 @@ function App() {
         <section className="intro-panel" aria-label="網站內容說明">
           <div>
             <p className="kicker">All-in-one Manual</p>
-            <h2>把操作流程整理成一個可部署的網站</h2>
+            <h2>SmileGuard II 操作流程總覽</h2>
           </div>
-          <p>此頁面專注於軟體教學內容，不加入其他行銷段落；圖片、檔名與步驟說明皆配合原始操作手冊呈現。</p>
+          <p>此頁面專注於軟體教學內容，依功能章節搭配實際操作截圖與步驟說明，方便使用者逐步查閱。</p>
         </section>
         {sections.map((section, index) => (
           <ManualSection section={section} index={index} key={section.id} />
@@ -248,7 +238,7 @@ function App() {
       </main>
       <footer className="footer">
         <span>SmileGuard II Software Manual</span>
-        <span>Built for Vercel deployment</span>
+        <span>Software Operation Guide</span>
       </footer>
     </>
   );
